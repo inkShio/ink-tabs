@@ -1,0 +1,9 @@
+.ink-tab {
+	&__panel {
+		display: none;
+
+		&.active {
+			display: block;
+		}
+	}
+}

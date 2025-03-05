@@ -1,0 +1,51 @@
+{
+	"name": "ink-tabs",
+	"version": "1.0.0",
+	"description": "Simple JS Library for tabs",
+	"main": "src/ink-tabs.js",
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/inkShio/ink-tabs"
+	},
+	"scripts": {
+		"build": "webpack",
+		"dev": "webpack --mode development"
+	},
+	"keywords": [
+		"tabs",
+		"js",
+		"css",
+		"scss",
+		"html"
+	],
+	"author": "inkShio",
+	"license": "MIT",
+	"bugs": {
+		"url": "https://github.com/inkShio/ink-tabs/issues"
+	},
+	"homepage": "https://github.com/inkShio/ink-tabs#readme",
+	"devDependencies": {
+		"@babel/core": "^7.26.9",
+		"@babel/plugin-transform-object-assign": "^7.25.9",
+		"@babel/preset-env": "^7.26.9",
+		"babel-loader": "^10.0.0",
+		"copy-webpack-plugin": "^13.0.0",
+		"css-loader": "^7.1.2",
+		"css-minimizer-webpack-plugin": "^7.0.0",
+		"file-loader": "^6.2.0",
+		"mini-css-extract-plugin": "^2.9.2",
+		"postcss": "^8.5.3",
+		"postcss-loader": "^8.1.1",
+		"postcss-preset-env": "^10.1.5",
+		"sass": "^1.85.1",
+		"sass-loader": "^16.0.5",
+		"style-loader": "^4.0.0",
+		"webpack": "^5.98.0",
+		"webpack-cli": "^6.0.1"
+	},
+	"browserslist": [
+		">0.2%",
+		"not dead",
+		"not op_mini all"
+	]
+}

@@ -1,0 +1,384 @@
+<!DOCTYPE html>
+<html lang="ru-RU">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>InkTabs Demo</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+		integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link href="ink-tabs.min.css" rel="stylesheet">
+</head>
+
+<body>
+	<div class="container py-4">
+		<h1 class="mb-4">InkTabs Demo</h1>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Без стилей</h2>
+			<p class="lead mb-4">Это пример внешнего вида без стилей, последущие примеры показаны с использованием bootstrap.
+				Для своих нужд вы можете стилизовать табы как вам угодно.</p>
+			<div class="ink-tab js-tabs">
+				<ul class="ink-tab__nav">
+					<li class="ink-tab__item"><button class="ink-tab__button" type="button">Один</button>
+					</li>
+					<li class="ink-tab__item"><button class="ink-tab__button" type="button">Два</button></li>
+					<li class="ink-tab__item"><button class="ink-tab__button" type="button">Три</button></li>
+				</ul>
+				<div class="ink-tab__content">
+					<div class="ink-tab__panel">Контент Один</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Стандарт</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs');
+  });
+&lt;/script&gt;
+
+&lt;div class="ink-tab js-tabs"&gt;
+  &lt;ul class="ink-tab__nav"&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Один&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Два&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Три&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="ink-tab__content"&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Один&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Два&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Три&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Два</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Три</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel">Контент Один</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Вложенные табы</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs');
+  });
+&lt;/script&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Два</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Три</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel">
+						<div class="ink-tab js-tabs">
+							<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+								<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Один</button>
+								</li>
+								<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Два</button>
+								</li>
+								<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Три</button>
+								</li>
+							</ul>
+							<div class="ink-tab__content border p-4">
+								<div class="ink-tab__panel">Вложенный контент Один</div>
+								<div class="ink-tab__panel">Вложенный контент Два</div>
+								<div class="ink-tab__panel">Вложенный контент Три</div>
+							</div>
+						</div>
+					</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Активация другой вкладки</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs-active', {
+      defaultTab: 2
+    });
+  });
+&lt;/script&gt;
+
+&lt;div class="ink-tab js-tabs-active"&gt;
+  &lt;ul class="ink-tab__nav"&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Один&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Два&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Три&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="ink-tab__content"&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Один&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Два&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Три&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs-active border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Два</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Три</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel">Контент Один</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+			<div class="mb-4"></div>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs-active-2', {
+      defaultTab: 'tab-3'
+    });
+  });
+&lt;/script&gt;
+
+&lt;div class="ink-tab js-tabs-active-2"&gt;
+  &lt;ul class="ink-tab__nav"&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-target="tab-1"&gt;Один&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-target="tab-2"&gt;Два&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-target="tab-3"&gt;Три&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="ink-tab__content"&gt;
+    &lt;div class="ink-tab__panel" data-tab-panel="tab-1"&gt;Контент Один&lt;/div&gt;
+    &lt;div class="ink-tab__panel" data-tab-panel="tab-2"&gt;Контент Два&lt;/div&gt;
+    &lt;div class="ink-tab__panel" data-tab-panel="tab-3"&gt;Контент Три&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs-active-2 border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-target="tab-1">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-target="tab-2">Два</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-target="tab-3">Три</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel" data-tab-panel="tab-1">Контент Один</div>
+					<div class="ink-tab__panel" data-tab-panel="tab-2">Контент Два</div>
+					<div class="ink-tab__panel" data-tab-panel="tab-3">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Прокрутка/Отступ</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs-scroll', {
+      scroll: true,
+      offset: 100
+    });
+  });
+&lt;/script&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs-scroll border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Два</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Три</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel">Контент Один</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Hash</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs-hash', {
+      hash: true
+    });
+  });
+&lt;/script&gt;
+
+&lt;div class="ink-tab js-tabs-hash"&gt;
+  &lt;ul class="ink-tab__nav"&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-target="hash-1"&gt;Один&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-target="hash-2"&gt;Два&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-target="hash-2"&gt;Три&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="ink-tab__content"&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Один&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Два&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Три&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs-hash border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-target="hash-1">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-target="hash-2">Два</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-target="hash-3">Три</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel">Контент Один</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">Fetch/AJAX/Link</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs');
+  });
+&lt;/script&gt;
+
+&lt;div class="ink-tab js-tabs"&gt;
+  &lt;ul class="ink-tab__nav"&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Один&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-load="fetch.html"&gt;Два&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button" data-tab-link="https://www.google.com/"&gt;Три&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="ink-tab__content"&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Один&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Два&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Три&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-load="fetch.html">Fetch Load</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button"
+							data-tab-link="https://www.google.com/">Google Link</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel">Контент Один</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+		<div class="border p-4 mb-4">
+			<h2 class="mb-4">A11y false</h2>
+			<div class="border p-4 mb-4">
+				<pre class="my-0"><code>
+&lt;script&gt;
+  document.addEventListener('DOMContentLoaded', function () {
+    const tabs = new InkTabs('.js-tabs-a11y');
+  });
+&lt;/script&gt;
+
+&lt;div class="ink-tab js-tabs-a11y"&gt;
+  &lt;ul class="ink-tab__nav"&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Один&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Два&lt;/button&gt;&lt;/li&gt;
+    &lt;li class="ink-tab__item nav-item"&gt;&lt;button class="ink-tab__button" type="button"&gt;Три&lt;/button&gt;&lt;/li&gt;
+  &lt;/ul&gt;
+  &lt;div class="ink-tab__content"&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Один&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Два&lt;/div&gt;
+    &lt;div class="ink-tab__panel"&gt;Контент Три&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+          </code></pre>
+			</div>
+			<div class="ink-tab js-tabs-a11y border p-4">
+				<ul class="ink-tab__nav nav nav-pills border p-4 mb-4">
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Один</button>
+					</li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Два</button></li>
+					<li class="ink-tab__item nav-item"><button class="ink-tab__button nav-link" type="button">Три</button></li>
+				</ul>
+				<div class="ink-tab__content border p-4">
+					<div class="ink-tab__panel">Контент Один</div>
+					<div class="ink-tab__panel">Контент Два</div>
+					<div class="ink-tab__panel">Контент Три</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+	<script defer src="ink-tabs.js"></script>
+	<script>
+		document.addEventListener('DOMContentLoaded', function () {
+			const tabs = new InkTabs('.js-tabs', {
+				isChanged: (tab) => console.log(tab)
+			});
+
+			const tabsActive = new InkTabs('.js-tabs-active', {
+				defaultTab: 1
+			});
+
+			const tabsActive2 = new InkTabs('.js-tabs-active-2', {
+				defaultTab: 'tab-3'
+			});
+
+			const tabsScroll = new InkTabs('.js-tabs-scroll', {
+				scroll: true,
+				offset: 100
+			});
+
+			const tabsHash = new InkTabs('.js-tabs-hash', {
+				hash: true
+			});
+
+			const tabsA11y = new InkTabs('.js-tabs-a11y', {
+				a11y: false
+			});
+		});
+	</script>
+</body>
+
+</html>
