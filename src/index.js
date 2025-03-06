@@ -1,3 +1,3 @@
-import InkTabs from './ink-tab';
-import './ink-tab.scss';
+import InkTabs from './ink-tabs';
+import './ink-tabs.scss';
 global.InkTabs = InkTabs;

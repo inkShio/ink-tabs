@@ -9,7 +9,7 @@ npm i ink-tabs --save
 
 ## Подключение
 ```js
-import InkTabs from 'ink-tab';
+import InkTabs from 'ink-tabs';
 ```
 ```scss
 // InkTabs
@@ -20,20 +20,20 @@ const tabs = new InkTabs('.js-tabs');
 ```
 
 ```html
-<div class="ink-tab js-tabs">
-  <ul class="ink-tab__nav">
-    <li class="ink-tab__item"><button class="ink-tab__button" type="button" data-tab-target="tab-one">Один</button></li>
-    <li class="ink-tab__item"><button class="ink-tab__button" type="button">Два</button></li>
-    <li class="ink-tab__item"><button class="ink-tab__button" type="button">Три</button></li>
-    <li class="ink-tab__item"><button class="ink-tab__button" type="button" data-tab-load="fetch.html">Fetch Load</button></li>
-    <li class="ink-tab__item"><button class="ink-tab__button" type="button" data-tab-link="https://www.google.com/">Google Link</button></li>
+<div class="ink-tabs js-tabs">
+  <ul class="ink-tabs__nav">
+    <li class="ink-tabs__item"><button class="ink-tabs__button" type="button" data-tab-target="tab-one">Один</button></li>
+    <li class="ink-tabs__item"><button class="ink-tabs__button" type="button">Два</button></li>
+    <li class="ink-tabs__item"><button class="ink-tabs__button" type="button">Три</button></li>
+    <li class="ink-tabs__item"><button class="ink-tabs__button" type="button" data-tab-load="fetch.html">Fetch Load</button></li>
+    <li class="ink-tabs__item"><button class="ink-tabs__button" type="button" data-tab-link="https://www.google.com/">Google Link</button></li>
   </ul>
-  <div class="ink-tab__content">
-    <div class="ink-tab__panel">Контент Один</div>
-    <div class="ink-tab__panel">Контент Два</div>
-    <div class="ink-tab__panel">Контент Три</div>
-    <div class="ink-tab__panel">fetch</div>
-    <div class="ink-tab__panel">link</div>
+  <div class="ink-tabs__content">
+    <div class="ink-tabs__panel">Контент Один</div>
+    <div class="ink-tabs__panel">Контент Два</div>
+    <div class="ink-tabs__panel">Контент Три</div>
+    <div class="ink-tabs__panel">fetch</div>
+    <div class="ink-tabs__panel">link</div>
   </div>
 </div>
 ```
@@ -52,7 +52,10 @@ const tabs = new InkTabs('.js-tabs');
 | offset            | number         | 0                  | Отступ сверху.                                                                                                    |
 | hash              | boolean        | false              | Обновлять hash в адресной строке. Так же если при заходе на страницу есть хеш таба, то будет открыта эта вкладка. |
 | a11y              | boolean        | true               | Включить/выключить доступность (accessibility).                                                                   |
-| isChanged         | function       |                    | Срабатывает после выбора вкладки                                                                                  |
+| navActiveClass    | string         | active             | Активный класс вкладки.                                                                                           |
+| buttonActiveClass | string         | active             | Активный класс кнопки.                                                                                            |
+| panelActiveClass  | string         | active             | Активный класс панели. (При изменении данной опции, добавьте `display: block;` в новый класс).                    |
+| isChanged         | function       |                    | Срабатывает после выбора вкладки.                                                                                 |
 
 ## Пример конфигурации
 ```js

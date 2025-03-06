@@ -7,6 +7,9 @@ export default class InkTabs {
 			offset: 0,
 			hash: false,
 			a11y: true,
+			navActiveClass: 'active',
+			buttonActiveClass: 'active',
+			panelActiveClass: 'active',
 			isChanged: () => { },
 			...options,
 		};
@@ -17,10 +20,10 @@ export default class InkTabs {
 	}
 
 	init(tab) {
-		const nav = tab.querySelector('.ink-tab__nav');
-		const buttons = nav.querySelectorAll('.ink-tab__button');
-		const content = tab.querySelector('.ink-tab__content');
-		const panels = content.querySelectorAll(':scope > .ink-tab__panel');
+		const nav = tab.querySelector('.ink-tabs__nav');
+		const buttons = nav.querySelectorAll('.ink-tabs__button');
+		const content = tab.querySelector('.ink-tabs__content');
+		const panels = content.querySelectorAll(':scope > .ink-tabs__panel');
 
 		this.setDefaultTab(tab, buttons, panels);
 		this.bindEvents(tab, buttons, panels);
@@ -100,11 +103,11 @@ export default class InkTabs {
 	}
 
 	activateTab(tab, index, clickedButton, buttons, panels) {
-		if (clickedButton.classList.contains('active')) return;
+		if (clickedButton.classList.contains(this.options.buttonActiveClass)) return;
 
 		buttons.forEach((button, i) => {
-			button.classList.remove('active');
-			button.closest('.ink-tab__item').classList.remove('active');
+			button.classList.remove(this.options.buttonActiveClass);
+			button.closest('.ink-tabs__item').classList.remove(this.options.navActiveClass);
 
 			if (this.options.a11y) {
 				button.setAttribute('aria-selected', 'false');
@@ -113,16 +116,16 @@ export default class InkTabs {
 		});
 
 		panels.forEach((panel, i) => {
-			panel.classList.remove('active');
+			panel.classList.remove(this.options.panelActiveClass);
 
 			if (this.options.a11y) {
 				panel.setAttribute('tabindex', '-1');
 			}
 		});
 
-		clickedButton.classList.add('active');
-		clickedButton.closest('.ink-tab__item').classList.add('active');
-		panels[index].classList.add('active');
+		clickedButton.classList.add(this.options.buttonActiveClass);
+		clickedButton.closest('.ink-tabs__item').classList.add(this.options.navActiveClass);
+		panels[index].classList.add(this.options.panelActiveClass);
 
 		if (this.options.a11y) {
 			clickedButton.setAttribute('aria-selected', 'true');
