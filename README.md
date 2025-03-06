@@ -65,9 +65,9 @@ const tabs = new InkTabs('.js-tabs', {
   offset: 0,
   hash: false,
   a11y: true,
-	navActiveClass: 'active',
-	buttonActiveClass: 'active',
-	panelActiveClass: 'active',
+  navActiveClass: 'active',
+  buttonActiveClass: 'active',
+  panelActiveClass: 'active',
   isChanged: (tab) => console.log(tab)
 });
 ```
