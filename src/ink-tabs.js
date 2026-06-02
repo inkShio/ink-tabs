@@ -7,23 +7,33 @@ export default class InkTabs {
 			offset: 0,
 			hash: false,
 			a11y: true,
-			navActiveClass: 'active',
-			buttonActiveClass: 'active',
-			panelActiveClass: 'active',
+			classNames: {
+				container: 'ink-tabs',
+				nav: 'ink-tabs__nav',
+				item: 'ink-tabs__item',
+				itemActive: 'active',
+				button: 'ink-tabs__button',
+				buttonActive: 'active',
+				content: 'ink-tabs__content',
+				panel: 'ink-tabs__panel',
+				panelActive: 'active'
+			},
 			isChanged: () => { },
 			...options,
 		};
+
 		this.tabs = document.querySelectorAll(this.selector);
+
 		if (this.tabs.length > 0) {
 			this.tabs.forEach(tab => this.init(tab));
 		}
 	}
 
 	init(tab) {
-		const nav = tab.querySelector('.ink-tabs__nav');
-		const buttons = nav.querySelectorAll('.ink-tabs__button');
-		const content = tab.querySelector('.ink-tabs__content');
-		const panels = content.querySelectorAll(':scope > .ink-tabs__panel');
+		const nav = tab.querySelector(`.${this.options.classNames.nav}`);
+		const buttons = nav.querySelectorAll(`.${this.options.classNames.button}`);
+		const content = tab.querySelector(`.${this.options.classNames.content}`);
+		const panels = content.querySelectorAll(`:scope > .${this.options.classNames.panel}`);
 
 		this.setDefaultTab(tab, buttons, panels);
 		this.bindEvents(tab, buttons, panels);
@@ -35,8 +45,10 @@ export default class InkTabs {
 				event.preventDefault();
 
 				const link = button.dataset.tabLink;
+				const target = button.dataset.tabLinkTarget;
+
 				if (link) {
-					window.location.href = link;
+					window.open(link, target || '_self');
 				} else {
 					this.activateTab(tab, index, button, buttons, panels);
 					this.handleHash(index, button);
@@ -58,6 +70,7 @@ export default class InkTabs {
 
 	setDefaultTab(tab, buttons, panels) {
 		let defaultIndex;
+
 		if (typeof this.options.defaultTab === 'number') {
 			defaultIndex = this.options.defaultTab;
 		} else if (typeof this.options.defaultTab === 'string') {
@@ -103,11 +116,11 @@ export default class InkTabs {
 	}
 
 	activateTab(tab, index, clickedButton, buttons, panels) {
-		if (clickedButton.classList.contains(this.options.buttonActiveClass)) return;
+		if (clickedButton.classList.contains(this.options.classNames.buttonActive)) return;
 
 		buttons.forEach((button, i) => {
-			button.classList.remove(this.options.buttonActiveClass);
-			button.closest('.ink-tabs__item').classList.remove(this.options.navActiveClass);
+			button.classList.remove(this.options.classNames.buttonActive);
+			button.closest(`.${this.options.classNames.item}`).classList.remove(this.options.classNames.itemActive);
 
 			if (this.options.a11y) {
 				button.setAttribute('aria-selected', 'false');
@@ -116,16 +129,16 @@ export default class InkTabs {
 		});
 
 		panels.forEach((panel, i) => {
-			panel.classList.remove(this.options.panelActiveClass);
+			panel.classList.remove(this.options.classNames.panelActive);
 
 			if (this.options.a11y) {
 				panel.setAttribute('tabindex', '-1');
 			}
 		});
 
-		clickedButton.classList.add(this.options.buttonActiveClass);
-		clickedButton.closest('.ink-tabs__item').classList.add(this.options.navActiveClass);
-		panels[index].classList.add(this.options.panelActiveClass);
+		clickedButton.classList.add(this.options.classNames.buttonActive);
+		clickedButton.closest(`.${this.options.classNames.item}`).classList.add(this.options.classNames.itemActive);
+		panels[index].classList.add(this.options.classNames.panelActive);
 
 		if (this.options.a11y) {
 			clickedButton.setAttribute('aria-selected', 'true');
@@ -153,6 +166,7 @@ export default class InkTabs {
 	handleHash(index, clickedButton) {
 		if (this.options.hash) {
 			let hash = clickedButton.dataset.tabTarget;
+
 			if (!hash) hash = `tab-${index + 1}`;
 			window.location.hash = hash;
 		}
@@ -168,6 +182,7 @@ export default class InkTabs {
 				const index = parseInt(hash.split('-')[1]);
 				targetButton = buttons[index - 1];
 			}
+
 			if (targetButton) {
 				const index = [...buttons].indexOf(targetButton);
 				this.activateTab(null, index, targetButton, buttons, panels);
@@ -183,14 +198,29 @@ export default class InkTabs {
 
 	handleFetch(index, clickedButton, panels) {
 		const url = clickedButton.dataset.tabLoad;
+		const selector = clickedButton.dataset.tabChunk;
+
 		if (url) {
 			fetch(url)
 				.then((response) => response.text())
 				.then((data) => {
-					panels[index].innerHTML = data;
+					if (selector) {
+						const parser = new DOMParser();
+						const doc = parser.parseFromString(data, 'text/html');
+						const element = doc.querySelector(selector);
+
+						if (element) {
+							panels[index].innerHTML = element.innerHTML;
+						} else {
+							console.error(`Element with selector '${selector}' not found in fetched content from '${url}'.`);
+						}
+					} else {
+						panels[index].innerHTML = data;
+					}
 				})
 				.catch((error) => {
 					console.error('Error fetching data:', error);
+					panels[index].innerHTML = 'Error loading content.';
 				});
 		}
 	}

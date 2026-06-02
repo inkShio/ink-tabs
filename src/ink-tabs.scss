@@ -1,8 +1,11 @@
-.ink-tabs {
+$tab-container: 'ink-tabs' !default;
+$tab-panel-active: 'active' !default;
+
+.#{$tab-container} {
 	&__panel {
 		display: none;
 
-		&.active {
+		&.#{$tab-panel-active} {
 			display: block;
 		}
 	}
